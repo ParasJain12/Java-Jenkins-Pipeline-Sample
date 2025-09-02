@@ -1,28 +1,29 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("compile"){
-            steps{
+
+    stages {
+        stage("compile") {
+            steps {
                 bat 'javac Main.java'
             }
         }
 
-        stage("run"){
-            steps{
+        stage("run") {
+            steps {
                 bat 'java Main'
             }
         }
     }
 
-    post{
-        always{
-            bat "Build Always"
+    post {
+        always {
+            echo "Build Always"
         }
-        success{
-            bat "Build Success"
+        success {
+            echo "Build Success"
         }
-        failure{
-            bat "Build failure"
+        failure {
+            echo "Build Failure"
         }
     }
 }
